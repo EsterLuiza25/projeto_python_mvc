@@ -1,0 +1,38 @@
+SQL:
+
+CREATE DATABASE biblioteca;
+
+Tabela autor
+
+CREATE TABLE autor (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    nacionalidade VARCHAR(50)
+);
+
+Tabela livro
+
+CREATE TABLE livro (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(200) NOT NULL,
+    ano_publicacao INTEGER,
+    autor_id INTEGER,
+    FOREIGN KEY (autor_id) REFERENCES autor(id) ON DELETE CASCADE
+);
+
+
+TABELA TESTE NO POSTGRE PARA TESTAR CONECTIVIDADE:
+
+INSERT INTO autor (nome, nacionalidade) VALUES 
+('Machado de Assis', 'Brasileira'),
+('Clarice Lispector', 'Brasileira'),
+('George Orwell', 'Britânica'),
+('J.K. Rowling', 'Britânica');
+
+
+INSERT INTO livro (titulo, ano_publicacao, autor_id) VALUES 
+('Dom Casmurro', 1899, 1),
+('A Hora da Estrela', 1977, 2),
+('1984', 1949, 3),
+('Harry Potter e a Pedra Filosofal', 1997, 4);
+
